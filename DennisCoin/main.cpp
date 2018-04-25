@@ -7,9 +7,19 @@
 //
 
 #include <iostream>
+#include "Block.hpp"
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+   
+    Block genesisBlock("Hello I'm the first block", "0");
+    cout << "Hash for Block 1: " << genesisBlock.hash << endl;
+    
+    Block secondBlock("Yo, I'm the second block", genesisBlock.hash);
+    cout << "Hash for Block 3: " << secondBlock.hash << endl;
+    
+    Block thirdBlock("Howdy, I'm the third block", secondBlock.hash);
+    cout << "Hash for Block 3: " << thirdBlock.hash << endl;
+    
     return 0;
 }
