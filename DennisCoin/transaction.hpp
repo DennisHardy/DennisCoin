@@ -21,15 +21,37 @@
 
 using namespace std;
 
-class transactionInput{
-public:
-    transactionInput();
-};
-
 class transactionOutput{
 public:
-    transactionOutput();
+    transactionOutput(string recipent, float value, string parentId);
+    transactionOutput(){};
+    bool isMine(string myKey);
+    void setId(string idIn);
+    void setRecipient(string recipientIn);
+    void setValue(float valueIn);
+    void setParent(string parentIn);
+    string getId();
+    string getRecipient();
+    float getValue();
+    string getParent();
+private:
+    string id;
+    string recipient;
+    float value;
+    string parentTransactionId;
+    
 };
+
+class transactionInput{
+public:
+    transactionInput(string OutputId);
+    void setUTXO(transactionOutput UTXOin);
+    string getTXOutputId();
+private:
+    string TXOutputId;
+    transactionOutput UTXO;
+};
+
 
 class transaction{
 public:
@@ -37,6 +59,8 @@ public:
     void generateSignature(privatekey_t privateKey);
     bool verifySignature();
     publickey_t fromPub;
+    bool processTransaction();
+
 private:
     string transactionId; //also hash of transaction
     string sender;
@@ -44,7 +68,7 @@ private:
     float value;
     signature_t signature;
     
-    vector<transactionInput> input;
+    vector<transactionInput> inputs;
     vector<transactionOutput> outputs;
     int sequence;
     

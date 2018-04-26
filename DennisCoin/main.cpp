@@ -44,7 +44,7 @@ int main(int argc, const char * argv[]) {
     cout << endl;
     chain.fullPrint();*/
     
-    cout << "verified: " << test.verifySignature();
+    cout << "verified: " << test.verifySignature() <<endl;
     
     return 0;
 }

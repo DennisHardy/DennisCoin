@@ -13,6 +13,8 @@
 #include <stdio.h>
 #include <vector>
 #include "Block.hpp"
+#include <unordered_map>
+#include "transaction.hpp"
 
 class Blockchain{
 public:
@@ -28,7 +30,7 @@ public:
     static int difficulty;
 private:
     vector<Block> chain; //vector of blocks in the chains
-    
+    unordered_map<string, transactionOutput> UTXOs;
 };
 
 #endif /* Blockchain_hpp */
