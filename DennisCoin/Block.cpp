@@ -16,6 +16,8 @@ Block::Block(string dataIn, string prevHashIn){
     hash = CalculateHash();
 }
 
+
+
 string Block::CalculateHash(){
     stringstream ss;
     ss << previousHash << timestamp << data;

@@ -7,19 +7,20 @@
 //
 
 #include <iostream>
+#include <vector>
 #include "Block.hpp"
-
+//#include "BlockChain.hpp"
 
 int main(int argc, const char * argv[]) {
-   
-    Block genesisBlock("Hello I'm the first block", "0");
-    cout << "Hash for Block 1: " << genesisBlock.hash << endl;
+    vector<Block> chain;
     
-    Block secondBlock("Yo, I'm the second block", genesisBlock.hash);
-    cout << "Hash for Block 3: " << secondBlock.hash << endl;
+    chain.push_back(Block("Hello I'm the first block", "0"));
+    chain.push_back(Block("Yo, I'm the second block", chain.at(chain.size()-1).hash));
+    chain.push_back(Block("Howdy, I'm the third block", chain.at(chain.size()-1).hash));
     
-    Block thirdBlock("Howdy, I'm the third block", secondBlock.hash);
-    cout << "Hash for Block 3: " << thirdBlock.hash << endl;
     
+    for (int i = 0 ; i < chain.size(); i++) {
+        cout << "Hash for Block " << i << ": " << chain.at(i).hash << "\t" << endl;
+    }
     return 0;
 }
