@@ -11,6 +11,9 @@
 		9543643C20913E3A00C2E0AB /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543643A20913E3A00C2E0AB /* Block.cpp */; };
 		9543643F2091410E00C2E0AB /* sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543643D2091410E00C2E0AB /* sha256.cpp */; };
 		954364482091574900C2E0AB /* Blockchain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 954364462091574900C2E0AB /* Blockchain.cpp */; };
+		9543644B2091800E00C2E0AB /* ecc.c in Sources */ = {isa = PBXBuildFile; fileRef = 954364492091800D00C2E0AB /* ecc.c */; };
+		9543644E2091840200C2E0AB /* wallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543644C2091840200C2E0AB /* wallet.cpp */; };
+		9543645120918EB800C2E0AB /* transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543644F20918EB800C2E0AB /* transaction.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +37,12 @@
 		9543643E2091410E00C2E0AB /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
 		954364462091574900C2E0AB /* Blockchain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Blockchain.cpp; sourceTree = "<group>"; };
 		954364472091574900C2E0AB /* Blockchain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Blockchain.hpp; sourceTree = "<group>"; };
+		954364492091800D00C2E0AB /* ecc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ecc.c; sourceTree = "<group>"; };
+		9543644A2091800D00C2E0AB /* ecc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ecc.h; sourceTree = "<group>"; };
+		9543644C2091840200C2E0AB /* wallet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = wallet.cpp; sourceTree = "<group>"; };
+		9543644D2091840200C2E0AB /* wallet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = wallet.hpp; sourceTree = "<group>"; };
+		9543644F20918EB800C2E0AB /* transaction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transaction.cpp; sourceTree = "<group>"; };
+		9543645020918EB800C2E0AB /* transaction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transaction.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +76,16 @@
 			isa = PBXGroup;
 			children = (
 				9543643320913E0900C2E0AB /* main.cpp */,
+				9543644F20918EB800C2E0AB /* transaction.cpp */,
+				9543645020918EB800C2E0AB /* transaction.hpp */,
+				9543644C2091840200C2E0AB /* wallet.cpp */,
+				9543644D2091840200C2E0AB /* wallet.hpp */,
 				954364462091574900C2E0AB /* Blockchain.cpp */,
 				954364472091574900C2E0AB /* Blockchain.hpp */,
 				9543643A20913E3A00C2E0AB /* Block.cpp */,
 				9543643B20913E3A00C2E0AB /* Block.hpp */,
+				954364492091800D00C2E0AB /* ecc.c */,
+				9543644A2091800D00C2E0AB /* ecc.h */,
 				9543643D2091410E00C2E0AB /* sha256.cpp */,
 				9543643E2091410E00C2E0AB /* sha256.h */,
 			);
@@ -133,9 +148,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9543644B2091800E00C2E0AB /* ecc.c in Sources */,
 				9543643420913E0900C2E0AB /* main.cpp in Sources */,
 				954364482091574900C2E0AB /* Blockchain.cpp in Sources */,
 				9543643F2091410E00C2E0AB /* sha256.cpp in Sources */,
+				9543645120918EB800C2E0AB /* transaction.cpp in Sources */,
+				9543644E2091840200C2E0AB /* wallet.cpp in Sources */,
 				9543643C20913E3A00C2E0AB /* Block.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

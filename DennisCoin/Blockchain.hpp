@@ -8,7 +8,7 @@
 
 #ifndef Blockchain_hpp
 #define Blockchain_hpp
-#define dif 5
+#define dif 4
 
 #include <stdio.h>
 #include <vector>
@@ -18,6 +18,7 @@ class Blockchain{
 public:
     Blockchain(); //constructor
     void print(); //prints hash values of chain
+    void fullPrint();
     void addBlock(Block newBlock); //adds block to the chain
     Block at(int i); //returns block at index of chain
     Block* end(); //returns last block in chain

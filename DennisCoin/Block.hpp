@@ -26,6 +26,9 @@ public:
     string CalculateHash(); //calculates new hash of block
     void mineBlock(int difficulty); //mines new blocks
     static int difficulty;
+    string getData();
+    time_t getTimestamp();
+    int getNonce();
 private:
     string data; //will be a simple message
     time_t timestamp; //time block

@@ -34,6 +34,26 @@ void Blockchain::print(){ //prints hashes of each chain block and validity
     }
 }
 
+void Blockchain::fullPrint(){ //prints hashes of each chain block and validity
+    
+    bool valid = isChainValid(); //print validity of chain
+    if (valid) {
+        cout << "chain is valid" << endl;
+    }
+    else{
+        cout << "invalid chain" << endl;
+    }
+    
+    //loop through block print hashes
+    for (int i = 0 ; i < chain.size(); i++) {
+        cout << "Block " << i << ": " << endl;
+        cout << "\t Hash: \t\t" << chain.at(i).hash << endl;
+        cout << "\t PrevHash: \t" << chain.at(i).previousHash << endl;
+        cout << "\t data: \t\t" << chain.at(i).getData() << endl;
+        cout << "\t time: \t\t" << chain.at(i).getTimestamp() << endl;
+        cout << "\t nonce: \t" << chain.at(i).getNonce() << endl;
+    }
+}
 Block Blockchain::at(int i){ //returns block at index
     return chain.at(i);
 }

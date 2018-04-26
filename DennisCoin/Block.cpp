@@ -45,3 +45,12 @@ void Block::mineBlock(int difficulty){
     
     return;
 }
+string Block::getData(){
+    return data;
+}
+time_t Block::getTimestamp(){
+    return timestamp;
+}
+int Block::getNonce(){
+    return nonce;
+}
