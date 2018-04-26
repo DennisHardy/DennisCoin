@@ -70,9 +70,9 @@
 				954364462091574900C2E0AB /* Blockchain.cpp */,
 				954364472091574900C2E0AB /* Blockchain.hpp */,
 				9543643A20913E3A00C2E0AB /* Block.cpp */,
+				9543643B20913E3A00C2E0AB /* Block.hpp */,
 				9543643D2091410E00C2E0AB /* sha256.cpp */,
 				9543643E2091410E00C2E0AB /* sha256.h */,
-				9543643B20913E3A00C2E0AB /* Block.hpp */,
 			);
 			path = DennisCoin;
 			sourceTree = "<group>";

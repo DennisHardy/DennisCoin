@@ -21,13 +21,15 @@ class Block {
 public:
     string hash;
     string previousHash;
-    Block(string data, string prevHash);
-    Block();
-    string CalculateHash();
-    
+    Block(string data, string prevHash); //constructor
+    Block(); //empty constructor
+    string CalculateHash(); //calculates new hash of block
+    void mineBlock(int difficulty); //mines new blocks
+    static int difficulty;
 private:
     string data; //will be a simple message
     time_t timestamp; //time block
-    
+    int nonce;
 };
+
 #endif /* Block_hpp */

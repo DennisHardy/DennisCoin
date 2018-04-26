@@ -8,6 +8,7 @@
 
 #ifndef Blockchain_hpp
 #define Blockchain_hpp
+#define dif 5
 
 #include <stdio.h>
 #include <vector>
@@ -15,16 +16,18 @@
 
 class Blockchain{
 public:
-    Blockchain();
-    void print();
-    void addBlock(Block newBlock);
-    Block at(int i);
-    int size();
-    string getLastHash();
+    Blockchain(); //constructor
+    void print(); //prints hash values of chain
+    void addBlock(Block newBlock); //adds block to the chain
+    Block at(int i); //returns block at index of chain
+    Block* end(); //returns last block in chain
+    int size(); //returns length of chain (# of blocks)
+    string getLastHash(); //returns the hash of the last block of the chain
     bool isChainValid(); //checks if hashes are valid
+    static int difficulty;
 private:
-    vector<Block> chain;
-
+    vector<Block> chain; //vector of blocks in the chains
+    
 };
 
 #endif /* Blockchain_hpp */

@@ -9,19 +9,39 @@
 #include "Block.hpp"
 #include "sha256.h"
 
-Block::Block(string dataIn, string prevHashIn){
+Block::Block(string dataIn, string prevHashIn){ //constructor
     data = dataIn; 
     previousHash = prevHashIn;
     timestamp = time(nullptr);
     hash = CalculateHash();
+
 }
 
-Block::Block(){}
+Block::Block(){}//empty constructor
 
-string Block::CalculateHash(){
+
+string Block::CalculateHash(){ //calculates hash of block
     stringstream ss;
-    ss << previousHash << timestamp << data;
+    ss << previousHash << timestamp << nonce << data;
+    //cout << ss.str();
     string calculatedhash = sha256(ss.str());
     
     return calculatedhash;
+}
+
+void Block::mineBlock(int difficulty){
+    stringstream targetSS;
+    for (int i = 0; i< difficulty; i++) {
+        targetSS << '0';
+    }
+    string target = targetSS.str();
+    
+    while (hash.substr(0,difficulty)!=target) {
+        this->nonce++;
+        this->hash = CalculateHash();
+        //cout << hash << endl;
+    }
+    cout << "Mined Block! :" << this->hash << endl;
+    
+    return;
 }
