@@ -9,18 +9,17 @@
 #include <iostream>
 #include <vector>
 #include "Block.hpp"
-//#include "BlockChain.hpp"
+#include "Blockchain.hpp"
 
 int main(int argc, const char * argv[]) {
-    vector<Block> chain;
+    Blockchain chain;
     
-    chain.push_back(Block("Hello I'm the first block", "0"));
-    chain.push_back(Block("Yo, I'm the second block", chain.at(chain.size()-1).hash));
-    chain.push_back(Block("Howdy, I'm the third block", chain.at(chain.size()-1).hash));
+    chain.addBlock(Block("Hello I'm the first block", "0"));
+    chain.addBlock(Block("Yo, I'm the second block", chain.getLastHash()));
+    chain.addBlock(Block("Howdy, I'm the third block", chain.getLastHash()));
     
     
-    for (int i = 0 ; i < chain.size(); i++) {
-        cout << "Hash for Block " << i << ": " << chain.at(i).hash << "\t" << endl;
-    }
+    chain.print();
     return 0;
 }
+

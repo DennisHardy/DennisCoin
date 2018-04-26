@@ -16,7 +16,7 @@ Block::Block(string dataIn, string prevHashIn){
     hash = CalculateHash();
 }
 
-
+Block::Block(){}
 
 string Block::CalculateHash(){
     stringstream ss;

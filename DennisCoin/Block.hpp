@@ -22,6 +22,7 @@ public:
     string hash;
     string previousHash;
     Block(string data, string prevHash);
+    Block();
     string CalculateHash();
     
 private:

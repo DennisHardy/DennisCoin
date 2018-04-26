@@ -10,6 +10,7 @@
 		9543643420913E0900C2E0AB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543643320913E0900C2E0AB /* main.cpp */; };
 		9543643C20913E3A00C2E0AB /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543643A20913E3A00C2E0AB /* Block.cpp */; };
 		9543643F2091410E00C2E0AB /* sha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543643D2091410E00C2E0AB /* sha256.cpp */; };
+		954364482091574900C2E0AB /* Blockchain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 954364462091574900C2E0AB /* Blockchain.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		9543643B20913E3A00C2E0AB /* Block.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Block.hpp; sourceTree = "<group>"; };
 		9543643D2091410E00C2E0AB /* sha256.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha256.cpp; sourceTree = "<group>"; };
 		9543643E2091410E00C2E0AB /* sha256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha256.h; sourceTree = "<group>"; };
+		954364462091574900C2E0AB /* Blockchain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Blockchain.cpp; sourceTree = "<group>"; };
+		954364472091574900C2E0AB /* Blockchain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Blockchain.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				9543643320913E0900C2E0AB /* main.cpp */,
+				954364462091574900C2E0AB /* Blockchain.cpp */,
+				954364472091574900C2E0AB /* Blockchain.hpp */,
 				9543643A20913E3A00C2E0AB /* Block.cpp */,
 				9543643D2091410E00C2E0AB /* sha256.cpp */,
 				9543643E2091410E00C2E0AB /* sha256.h */,
@@ -129,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9543643420913E0900C2E0AB /* main.cpp in Sources */,
+				954364482091574900C2E0AB /* Blockchain.cpp in Sources */,
 				9543643F2091410E00C2E0AB /* sha256.cpp in Sources */,
 				9543643C20913E3A00C2E0AB /* Block.cpp in Sources */,
 			);
