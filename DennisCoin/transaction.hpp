@@ -18,8 +18,11 @@
 #include <vector>
 #include "sha256.h"
 #include "wallet.hpp"
+#include "Blockchain.hpp"
 
 using namespace std;
+class Blockchain;
+
 
 class transactionOutput{
 public:
@@ -34,6 +37,7 @@ public:
     string getRecipient();
     float getValue();
     string getParent();
+    
 private:
     string id;
     string recipient;
@@ -44,9 +48,12 @@ private:
 
 class transactionInput{
 public:
-    transactionInput(string OutputId);
+    //transactionInput(string OutputId);
     void setUTXO(transactionOutput UTXOin);
+    transactionInput(string OutputId, transactionOutput output);
     string getTXOutputId();
+    float getUTXOValue();
+    
 private:
     string TXOutputId;
     transactionOutput UTXO;
@@ -56,12 +63,17 @@ private:
 class transaction{
 public:
     transaction(string from, string to, float ammount, vector<transactionInput> inputs);
+    transaction();
     void generateSignature(privatekey_t privateKey);
     bool verifySignature();
     publickey_t fromPub;
-    bool processTransaction();
-
-private:
+    bool processTransaction(Blockchain *chain);
+    float getInputsValue();
+    float getOutputsValue();
+    string getTransactionId();
+    transactionOutput getOutputAt(int i);
+    void setTransactionId(string idIn);
+//private:
     string transactionId; //also hash of transaction
     string sender;
     string reciever;

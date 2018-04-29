@@ -14,6 +14,7 @@
 		9543644B2091800E00C2E0AB /* ecc.c in Sources */ = {isa = PBXBuildFile; fileRef = 954364492091800D00C2E0AB /* ecc.c */; };
 		9543644E2091840200C2E0AB /* wallet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543644C2091840200C2E0AB /* wallet.cpp */; };
 		9543645120918EB800C2E0AB /* transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543644F20918EB800C2E0AB /* transaction.cpp */; };
+		9543645420956CDB00C2E0AB /* merkleRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9543645220956CDB00C2E0AB /* merkleRoot.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		9543644D2091840200C2E0AB /* wallet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = wallet.hpp; sourceTree = "<group>"; };
 		9543644F20918EB800C2E0AB /* transaction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transaction.cpp; sourceTree = "<group>"; };
 		9543645020918EB800C2E0AB /* transaction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transaction.hpp; sourceTree = "<group>"; };
+		9543645220956CDB00C2E0AB /* merkleRoot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = merkleRoot.cpp; sourceTree = "<group>"; };
+		9543645320956CDB00C2E0AB /* merkleRoot.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = merkleRoot.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				9543643320913E0900C2E0AB /* main.cpp */,
 				9543644F20918EB800C2E0AB /* transaction.cpp */,
 				9543645020918EB800C2E0AB /* transaction.hpp */,
+				9543645220956CDB00C2E0AB /* merkleRoot.cpp */,
+				9543645320956CDB00C2E0AB /* merkleRoot.hpp */,
 				9543644C2091840200C2E0AB /* wallet.cpp */,
 				9543644D2091840200C2E0AB /* wallet.hpp */,
 				954364462091574900C2E0AB /* Blockchain.cpp */,
@@ -151,6 +156,7 @@
 				9543644B2091800E00C2E0AB /* ecc.c in Sources */,
 				9543643420913E0900C2E0AB /* main.cpp in Sources */,
 				954364482091574900C2E0AB /* Blockchain.cpp in Sources */,
+				9543645420956CDB00C2E0AB /* merkleRoot.cpp in Sources */,
 				9543643F2091410E00C2E0AB /* sha256.cpp in Sources */,
 				9543645120918EB800C2E0AB /* transaction.cpp in Sources */,
 				9543644E2091840200C2E0AB /* wallet.cpp in Sources */,

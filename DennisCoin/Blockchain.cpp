@@ -15,6 +15,7 @@ Blockchain::Blockchain(){ //constructor
 }
 
 void Blockchain::addBlock(Block newBlock){ //adds block to chain
+    newBlock.mineBlock(dif);
     chain.push_back(newBlock);
 }
 
@@ -49,7 +50,7 @@ void Blockchain::fullPrint(){ //prints hashes of each chain block and validity
         cout << "Block " << i << ": " << endl;
         cout << "\t Hash: \t\t" << chain.at(i).hash << endl;
         cout << "\t PrevHash: \t" << chain.at(i).previousHash << endl;
-        cout << "\t data: \t\t" << chain.at(i).getData() << endl;
+        //cout << "\t data: \t\t" << chain.at(i).getData() << endl;
         cout << "\t time: \t\t" << chain.at(i).getTimestamp() << endl;
         cout << "\t nonce: \t" << chain.at(i).getNonce() << endl;
     }
@@ -78,6 +79,9 @@ bool Blockchain::isChainValid(){ //checks validity of chain
     }
     string targetHash = targetSS.str();
     
+    unordered_map<string, transactionOutput> tempUTXOs;
+    tempUTXOs.insert({genesisTransaction->outputs.at(0).getId(), genesisTransaction->outputs.at(0)});
+    
     //loop through all blocks
     for (int i=1; i<chain.size(); i++) {
         currentBlock = &chain.at(i);
@@ -99,6 +103,68 @@ bool Blockchain::isChainValid(){ //checks validity of chain
             cout << "Block " << i << " has not been mined (incorrect hash)" << endl;
             return false;
         }
+        transactionOutput tempOutput;
+        
+        //loop through all transactions
+        for (int t=0; t<currentBlock->getNumTransactions(); t++) {
+            transaction currentTransaction = currentBlock->getTransactionAt(t);
+            
+            if (!currentTransaction.verifySignature()) {
+                cout << "Invalid signature on transaction: " << "t" << endl;
+                return false;
+            }
+            if (currentTransaction.getInputsValue() != currentTransaction.getOutputsValue()) {
+                cout << "Inputs not equal to outputs at transaction: " << "t" << endl;
+                return false;
+            }
+            
+            for (transactionInput input : currentTransaction.inputs) {
+                unordered_map<string, transactionOutput>::const_iterator temp = tempUTXOs.find(input.getTXOutputId());
+                
+                if (temp == tempUTXOs.end()) {
+                    cout << "input to transaction: " << t << "could not be found" <<endl;
+                    return false;
+                }
+                transactionOutput tempOutput = temp->second;
+                
+                if (input.getUTXOValue() != tempOutput.getValue()) {
+                    cout << "refernced input transaction: " << t << "is not valid" << endl;
+                    return false;
+                }
+                tempUTXOs.erase(temp);
+            }
+            for (transactionOutput o:currentTransaction.outputs) {
+                tempUTXOs.insert({o.getId(), o});
+            }
+            if(currentTransaction.getOutputAt(0).getRecipient() !=currentTransaction.reciever){
+                cout << "Transaction: " << t << "recipient output not who it should be" << endl;
+                return false;
+            }
+            if (currentTransaction.getOutputAt(1).getRecipient() != currentTransaction.sender) {
+                cout << "Transaction: " << t << "recipient sender not who it should be" << endl;
+                return false;
+            }
+            
+        }
+        
     }
+    cout << "Chain is valid" <<endl <<endl;
     return true;
+}
+
+transactionOutput Blockchain::getUTXO(string outputID){
+    return UTXOs.find(outputID)->second;
+}
+
+void Blockchain::addUTXO(string outputId, transactionOutput output){
+    UTXOs.insert({outputId, output});
+    return;
+}
+
+void Blockchain::removeUTXO(string outputId){
+    UTXOs.erase(outputId);
+    return;
+}
+unordered_map<string, transactionOutput> Blockchain::getAllUTXOs(){
+    return UTXOs;
 }

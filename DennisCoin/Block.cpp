@@ -9,12 +9,18 @@
 #include "Block.hpp"
 #include "sha256.h"
 
-Block::Block(string dataIn, string prevHashIn){ //constructor
+/*Block::Block(string dataIn, string prevHashIn){ //constructor
     data = dataIn; 
     previousHash = prevHashIn;
     timestamp = time(nullptr);
     hash = CalculateHash();
 
+}*/
+
+Block::Block(string prevHashIn){
+    previousHash = prevHashIn;
+    timestamp=time(nullptr);
+    hash = CalculateHash();
 }
 
 Block::Block(){}//empty constructor
@@ -22,7 +28,8 @@ Block::Block(){}//empty constructor
 
 string Block::CalculateHash(){ //calculates hash of block
     stringstream ss;
-    ss << previousHash << timestamp << nonce << data;
+    //ss << previousHash << timestamp << nonce << data;
+    ss << previousHash << timestamp << nonce << merkleRoot;
     //cout << ss.str();
     string calculatedhash = sha256(ss.str());
     
@@ -30,6 +37,8 @@ string Block::CalculateHash(){ //calculates hash of block
 }
 
 void Block::mineBlock(int difficulty){
+    merkleRoot = getMerkleRoot(transactions);
+    
     stringstream targetSS;
     for (int i = 0; i< difficulty; i++) {
         targetSS << '0';
@@ -41,16 +50,38 @@ void Block::mineBlock(int difficulty){
         this->hash = CalculateHash();
         //cout << hash << endl;
     }
-    cout << "Mined Block! :" << this->hash << endl;
+    cout << "Mined Block!!! :" << this->hash << endl <<endl;
     
     return;
 }
-string Block::getData(){
-    return data;
+
+bool Block::addTransaction(transaction addMe, Blockchain* chain){
+    
+    if (addMe.getTransactionId() == "") return false;
+    if (previousHash != "0") {
+        if (addMe.processTransaction(chain) != true) {
+            cout << "could not process transaction, discarding"<<endl;
+            return false;
+        }
+        transactions.push_back(addMe);
+        cout << "Transaction added to block"<<endl;
+    }
+    return true;
 }
+
+/*string Block::getData(){
+    return data;
+}*/
+
 time_t Block::getTimestamp(){
     return timestamp;
 }
 int Block::getNonce(){
     return nonce;
+}
+int Block::getNumTransactions(){
+    return transactions.size();
+}
+transaction Block::getTransactionAt(int i){
+    return transactions.at(i);
 }

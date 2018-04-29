@@ -15,18 +15,27 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <unordered_map>
+#include "transaction.hpp"
+#include "Blockchain.hpp"
 
 using namespace std;
+class transactionOutput;
+class Blockchain;
+class transaction;
 
 string publicKeyToString(publickey_t key);
+
 class wallet{
 public:
     string getPublicKey();
     wallet();
     publickey_t publicKey;
     privatekey_t privateKey;
+    float getBalance(Blockchain chain);
+    transaction sendFunds(string recipient, float value, Blockchain *chain);
 private:
-    
+    unordered_map<string, transactionOutput> myUTXOs;
      
 };
 

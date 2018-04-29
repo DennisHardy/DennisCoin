@@ -16,6 +16,12 @@
 #include <unordered_map>
 #include "transaction.hpp"
 
+class transactionOutput;
+class Block;
+class transaction;
+
+using namespace std;
+
 class Blockchain{
 public:
     Blockchain(); //constructor
@@ -28,6 +34,11 @@ public:
     string getLastHash(); //returns the hash of the last block of the chain
     bool isChainValid(); //checks if hashes are valid
     static int difficulty;
+    transactionOutput getUTXO(string outputID);
+    void addUTXO(string outputId, transactionOutput output);
+    void removeUTXO(string outputId);
+    unordered_map<string, transactionOutput> getAllUTXOs();
+    transaction *genesisTransaction;
 private:
     vector<Block> chain; //vector of blocks in the chains
     unordered_map<string, transactionOutput> UTXOs;
